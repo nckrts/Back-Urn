@@ -21,7 +21,6 @@ class PresidenteApiController extends Controller
     public function index()
     {
         $data= $this->presidente->all();
-        dd($data);
-        return response()->json('PresidenteApiController');
+        return response()->json($data);
     }
 }

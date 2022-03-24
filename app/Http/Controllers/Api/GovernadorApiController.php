@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Models\governador;
 use Illuminate\Http\Request;
-use App\Models\Models\senador;
 
-class SenadorApiController extends Controller
+class GovernadorApiController extends Controller
 {
-    public function __construct(senador $senador, request $request)
+    public function __construct(governador $governador, request $request)
     {
-        $this->senador = $senador;
+        $this->governador = $governador;
         $this->request = $request;
     }
 
 
     public function index()
     {
-        $data = $this->senador->all();
+        $data = $this->governador->all();
         return response()->json($data);
     }
 }

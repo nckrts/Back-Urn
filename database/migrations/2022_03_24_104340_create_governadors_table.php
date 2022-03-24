@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
+        Schema::create('governadors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome', 150)->unique();
+            $table->string('partido',100)->nullable();
+            $table->string('numero',2)->unique();
+            $table->string('image', 100);
+            $table->integer('votos');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('governadors');
     }
 };

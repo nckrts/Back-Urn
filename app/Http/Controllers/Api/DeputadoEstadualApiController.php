@@ -18,7 +18,6 @@ class DeputadoEstadualApiController extends Controller
     public function index()
     {
         $data = $this->DeputadoEstadual->all();
-        dd($data);
-        return response()->json('DeputadoEstadualApiController');
+        return response()->json($data);
     }
 }

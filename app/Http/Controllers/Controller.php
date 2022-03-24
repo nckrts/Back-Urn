@@ -11,6 +11,6 @@ class Controller extends BaseController
 {
     public function index()
     {
-        return response()->json('passou aki');
+
     }
 }
