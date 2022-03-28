@@ -10,6 +10,7 @@ class DeputadoEstadualApiController extends Controller
 {
     public function __construct(deputado_estadual $DeputadoEstadual, request $request)
     {
+        public var
         $this->DeputadoEstadual = $DeputadoEstadual;
         $this->request = $request;
     }

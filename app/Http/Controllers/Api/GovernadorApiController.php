@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Models\governador;
 use Illuminate\Http\Request;
 
 class GovernadorApiController extends Controller

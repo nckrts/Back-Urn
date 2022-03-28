@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('presidentes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 150)->unique();
-            $table->string('partido',100)->nullable();
+            $table->string('partido',100);
             $table->string('numero',2)->unique();
             $table->string('image', 100);
             $table->integer('votos');
