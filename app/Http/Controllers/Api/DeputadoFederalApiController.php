@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Models\DeputadoFederal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DeputadoFederalApiController extends Controller
 {
@@ -34,8 +35,8 @@ class DeputadoFederalApiController extends Controller
 
             $requestImage->move(public_path('storage/img'), $uploadImage);
 
-            $dataForm['image']= 'C:/Users/Dev07/Back-Urn/public/storage/img/'. $uploadImage;
-
+//            $dataForm['image']= 'C:/Users/Dev07/Back-Urn/public/storage/img/'. $uploadImage;
+             $dataForm['image']= $uploadImage;
         }
 
         $data = DeputadoFederal::create($dataForm);
@@ -46,18 +47,36 @@ class DeputadoFederalApiController extends Controller
 
     public function show($id)
     {
-        return response()->json('show');
+        if(!$data = $this->DeputadoFederal->find($id)) {
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        }else{
+            return response()->json($data);
+        }
     }
 
 
-    public function edit($id)
+    public function update($id)
     {
-        return response()->json('edit');
+        $this->DeputadoFederal->where('id', $id)->update([
+            'nome'=> $this->request['nome'],
+            'partido'=> $this->request['partido'],
+            'numero'=> $this->request['numero']
+        ]);
+
+        return $this->request;
     }
 
 
     public function destroy($id)
     {
-        return response()->json('destroy');
+        if(!$data = $this->Senador->find($id))
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        if($data->image){
+            Storage::disk('public')->delete("/img/$data->image");
+        }
+
+        $data->delete();
+        return response()->json(['sucess'=>'Deletado com sucesso!']);
+
     }
 }
