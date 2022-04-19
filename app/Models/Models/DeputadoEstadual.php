@@ -9,10 +9,11 @@ class DeputadoEstadual extends Model
 {
     protected $table = "deputado_estadual";
     protected $fillable = [
-      'nome',
-      'partido',
-      'numero',
-      'image',
+        'nome',
+        'partido',
+        'numero',
+        'image',
+        'votos',
     ];
 
     public static function rules(){
