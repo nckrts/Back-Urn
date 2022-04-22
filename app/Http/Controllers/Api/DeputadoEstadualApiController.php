@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Models\DeputadoEstadual;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DeputadoEstadualApiController extends Controller
@@ -23,7 +23,6 @@ class DeputadoEstadualApiController extends Controller
     }
     public function store(Request $request)
     {
-//        $this->request->validate(DeputadoEstadual::rules(), $request->all());
         $dataForm = $request->all();
 
         if($request->hasfile('image') && $request->file('image')->isValid()){
@@ -38,14 +37,12 @@ class DeputadoEstadualApiController extends Controller
 
 //            $dataForm['image']= 'C:/Users/Dev07/Back-Urn/public/storage/img/'. $uploadImage;
             $dataForm['image']= $uploadImage;
-    }
-
+        }
 
         $data = DeputadoEstadual::create($dataForm);
 
         return response()->json($data, 201);
     }
-
 
     public function show($id)
     {

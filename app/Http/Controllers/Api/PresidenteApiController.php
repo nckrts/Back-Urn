@@ -55,6 +55,36 @@ class PresidenteApiController extends Controller
         }
     }
 
+    public function number($numero)
+    {
+        if(!$data = $this->Presidente->find($numero)) {
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        }else{
+            return response()->json($data);
+        }
+    }
+
+    public function vote($votos)
+    {
+        if(!$data = $this->Presidente->find($votos)) {
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        }else{
+            return response()->json($data);
+        }
+    }
+
+    public function updatevote($id)
+    {
+        $this->Presidente->where('id', $id)->update([
+            'votos'=> $this->request['votos'],
+        ]);
+
+        return $this->request;
+    }
+
+
+
+
     public function update($id)
     {
         $this->Presidente->where('id', $id)->update([

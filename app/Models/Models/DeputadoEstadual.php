@@ -16,12 +16,12 @@ class DeputadoEstadual extends Model
         'votos',
     ];
 
-    public static function rules(){
-      return  [
-        'nome' => 'required',
-        'partido' => 'required',
-        'numero' => 'required|unique:DeputadoEstadual',
-        'image' => 'image',
+    public function rules(){
+        return  [
+            'nome' => 'required',
+            'partido' => 'required',
+            'numero' => 'required|unique:DeputadoEstadual',
+            'image' => 'image',
         ];
     }
 }

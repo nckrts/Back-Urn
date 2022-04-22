@@ -43,6 +43,7 @@ Route::group(['prefix' => 'presidente'], function (){
     Route::post('adicionar', [PresidenteApiController::class, 'store']);
     Route::get('mostrar', [PresidenteApiController::class, 'index']);
     Route::get('{id}', [PresidenteApiController::class, 'show']);
+    Route::get('{numero}', [PresidenteApiController::class, 'show']);
     Route::put('editar/{id}', [PresidenteApiController::class, 'update']);
     Route::delete('{id}', [PresidenteApiController::class, 'destroy']);
 });
