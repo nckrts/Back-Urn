@@ -68,7 +68,7 @@ class DeputadoEstadualApiController extends Controller
 
     public function destroy($id)
     {
-        if(!$data = $this->Senador->find($id))
+        if(!$data = $this->DeputadoEstadual->find($id))
             return response()->json(['error' => 'Nada encontrado'], 404);
         if($data->image){
             Storage::disk('public')->delete("/img/$data->image");
@@ -76,6 +76,8 @@ class DeputadoEstadualApiController extends Controller
 
         $data->delete();
         return response()->json(['sucess'=>'Deletado com sucesso!']);
+
+
 
     }
 }

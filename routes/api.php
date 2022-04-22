@@ -13,11 +13,11 @@ Route::group(['prefix' => 'deputado_estadual'], function (){
     Route::get('mostrar', [DeputadoEstadualApiController::class, 'index']);
     Route::get('{id}', [DeputadoEstadualApiController::class, 'show']);
     Route::put('editar/{id}', [DeputadoEstadualApiController::class, 'update']);
-    Route::delete('{id}', [DeputadoEstadualApiController::class, 'destroy']);
+    Route::delete('deletar/{id}', [DeputadoEstadualApiController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'deputado_federal'], function (){
-    Route::delete('{id}', [DeputadoFederalApiController::class, 'destroy']);
+    Route::delete('deletar/{id}', [DeputadoFederalApiController::class, 'destroy']);
     Route::post('adicionar', [DeputadoFederalApiController::class, 'store']);
     Route::get('mostrar', [DeputadoFederalApiController::class, 'index']);
     Route::get('{id}', [DeputadoFederalApiController::class, 'show']);
@@ -29,7 +29,7 @@ Route::group(['prefix' => 'governadors'], function (){
     Route::get('mostrar', [GovernadorApiController::class, 'index']);
     Route::get('{id}', [GovernadorApiController::class, 'show']);
     Route::put('editar/{id}', [GovernadorApiController::class, 'update']);
-    Route::delete('{id}', [GovernadorApiController::class, 'destroy']);
+    Route::delete('deletar/{id}', [GovernadorApiController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'senadors'], function (){
@@ -37,7 +37,7 @@ Route::group(['prefix' => 'senadors'], function (){
     Route::get('mostrar', [SenadorApiController::class, 'index']);
     Route::get('{id}', [SenadorApiController::class, 'show']);
     Route::put('editar/{id}', [SenadorApiController::class, 'update']);
-    Route::delete('{id}', [SenadorApiController::class, 'destroy']);
+    Route::delete('deletar/{id}', [SenadorApiController::class, 'destroy']);
 });
 Route::group(['prefix' => 'presidente'], function (){
     Route::post('adicionar', [PresidenteApiController::class, 'store']);
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'presidente'], function (){
     Route::get('{id}', [PresidenteApiController::class, 'show']);
     Route::get('{numero}', [PresidenteApiController::class, 'show']);
     Route::put('editar/{id}', [PresidenteApiController::class, 'update']);
-    Route::delete('{id}', [PresidenteApiController::class, 'destroy']);
+    Route::delete('deletar/{id}', [PresidenteApiController::class, 'destroy']);
 });
 
 

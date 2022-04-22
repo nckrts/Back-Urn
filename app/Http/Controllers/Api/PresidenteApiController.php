@@ -99,7 +99,7 @@ class PresidenteApiController extends Controller
 
     public function destroy($id)
     {
-        if(!$data = $this->Senador->find($id))
+        if(!$data = $this->Presidente->find($id))
             return response()->json(['error' => 'Nada encontrado'], 404);
         if($data->image){
             Storage::disk('public')->delete("/img/$data->image");
