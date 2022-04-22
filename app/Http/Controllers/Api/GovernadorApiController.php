@@ -52,6 +52,12 @@ class GovernadorApiController extends Controller
         }
     }
 
+    public function updateVotos($id)
+    {
+        $votos = $this->governador::select('votos')->where('id', $id)->first();
+        $this->governador::where('id', $id)->update(['votos' => $votos['votos'] + 1]);
+    }
+
 
     public function update($id)
     {
@@ -76,5 +82,13 @@ class GovernadorApiController extends Controller
         $data->delete();
         return response()->json(['sucess'=>'Deletado com sucesso!']);
 
+    }
+    public function numbershow($numero)
+    {
+        if(!$data = $this->governador->where('numero', $numero)->first()) {
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        }else{
+            return response()->json($data);
+        }
     }
 }

@@ -46,15 +46,14 @@ class SenadorApiController extends Controller
     }
 
 
-    public function show($id)
+    public function numbershow($numero)
     {
-        if(!$data = $this->Senador->find($id)) {
+        if(!$data = $this->Senador->where('numero', $numero)->first()) {
             return response()->json(['error' => 'Nada encontrado'], 404);
         }else{
             return response()->json($data);
         }
     }
-
 
     public function destroy($id)
     {
@@ -79,6 +78,13 @@ class SenadorApiController extends Controller
             ]);
 
         return $this->request;
+    }
+
+    public function updateVotos($id)
+    {
+        $votos = $this->Senador::select('votos')->where('id', $id)->first();
+
+        $this->Senador::where('id', $id)->update(['votos' => $votos['votos'] + 1]);
     }
 
 }

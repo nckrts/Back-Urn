@@ -55,9 +55,9 @@ class PresidenteApiController extends Controller
         }
     }
 
-    public function number($numero)
+    public function numbershow($numero)
     {
-        if(!$data = $this->Presidente->find($numero)) {
+        if(!$data = $this->Presidente->where('numero', $numero)->first()) {
             return response()->json(['error' => 'Nada encontrado'], 404);
         }else{
             return response()->json($data);
@@ -108,5 +108,11 @@ class PresidenteApiController extends Controller
         $data->delete();
         return response()->json(['sucess'=>'Deletado com sucesso!']);
 
+    }
+
+    public function updateVotos($id)
+    {
+        $votos = $this->Presidente::select('votos')->where('id', $id)->first();
+        $this->Presidente::where('id', $id)->update(['votos' => $votos['votos'] + 1]);
     }
 }

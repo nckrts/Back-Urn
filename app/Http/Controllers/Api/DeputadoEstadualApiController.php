@@ -49,8 +49,17 @@ class DeputadoEstadualApiController extends Controller
         if(!$data = $this->DeputadoEstadual->find($id)) {
             return response()->json(['error' => 'Nada encontrado'], 404);
         }else{
-        return response()->json($data);
-            }
+            return response()->json($data);
+        }
+    }
+
+    public function numbershow($numero)
+    {
+        if(!$data = $this->DeputadoEstadual->where('numero', $numero)->first()) {
+            return response()->json(['error' => 'Nada encontrado'], 404);
+        }else{
+            return response()->json($data);
+        }
     }
 
 
@@ -79,5 +88,11 @@ class DeputadoEstadualApiController extends Controller
 
 
 
+    }
+
+    public function updateVotos($id)
+    {
+        $votos = $this->DeputadoEstadual::select('votos')->where('id', $id)->first();
+        $this->DeputadoEstadual::where('id', $id)->update(['votos' => $votos['votos'] + 1]);
     }
 }
